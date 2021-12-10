@@ -1,0 +1,20 @@
+.form-group {
+
+    margin-bottom: 10px;
+
+}
+
+#search {
+    color:white;
+    background-color:orange;
+    font-size: 30px;
+    border-radius: 20px;
+    cursor:pointer;
+
+}
+
+#inputValue {
+    width: 600px;
+    padding: 5px;
+    font-size: 24px;
+}
