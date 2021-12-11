@@ -41,11 +41,25 @@ section img {
     width:500px;
 }
 
+
 img:hover{
     transform: scale(1.1);
     cursor: pointer;
-    
+    opacity: 0.5;
 }
+
+img:hover section h2{
+    background-color: #04AA6D;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+
+
 #movies-searchable {
     background-image: url('https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80');
+}
+
+.content-display {
+    display:block;
 }

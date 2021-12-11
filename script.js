@@ -36,6 +36,9 @@ movie-id="556"<--- this will need to be changed dynamically
 function movieSection(movies) {
     return movies.map((movie) => {
         return `
+        <h2>Title: ${movie.Title}</h2>
+        <br>
+        <h2> Year: ${movie.Year}</h2>
         <img src=${movie.Poster} movie-id=${movie.imdbID}/>
         `;
     })
@@ -49,8 +52,11 @@ function createMovieContainer(movies){
 
     /*declare new variable, using backticks
     looping through every single movie with map */
-    const movieTemplate = ` 
-    <section class="section">
+    img_list = movieSection(movies);
+    const movieTemplate = 
+    `<section class="section">
+    
+    ${img_list.join("")}  //join takes the array and converts it to a string to remove commas between 
     ${movieSection(movies)}
     </section>
     <div class="content">
@@ -69,6 +75,7 @@ function SearchMovies(data) {
 const movies = data.Search; //get the value from "search"
 const movieBlock = createMovieContainer(movies);
 searchEl.appendChild(movieBlock);
+//Validation purposes, can see data also from dev tools in browser
 console.log("Data:", data);
 }
 
@@ -79,7 +86,10 @@ buttonEl.onclick=function(event) {
     //store user input for future use
     const value = inputEl.value;
    // Validation purposes -- console.log("Value:", value);
-     
+   //if user tries to search with empty value, error msg pop up
+   if (inputEl.value == "") {
+    alert("You cannot search with empty value.");
+   }
     //combine url + user Input + api key, to create url to search from 
     const newUrl = url + value + API_KEY;
 
@@ -97,6 +107,6 @@ buttonEl.onclick=function(event) {
         console.log("Error:", error);
     }); 
 
-    
+    inputEl.value = ""; // empty user input after user click on the buttonel
     // Validation purposes -- console.log("hello");
 }
