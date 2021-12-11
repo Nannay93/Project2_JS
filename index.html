@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Linking style sheet-->
     <link rel="stylesheet" href="style.css">
-    <title>Movie App</title>
+    <title>Movie App wit JS</title>
 </head>
 <body>
     <div class="container">
@@ -15,11 +15,14 @@
 
         <form>
             <div class="form-group">
-                <input type="text" id="userInput">
+                <input type="text" id="userInput" placeholder="Enter movie name... i.e. Avengers">
+                <button type="submit" id="search">Search movies</button>
             </div>
-            <button type="submit" id="search">Search a movie</button>
+            
         </form>
     </div>
+
+    <div id="movies-searchable"></div>
 
     <!-- Linking JS-->
     <script src="script.js"></script>
