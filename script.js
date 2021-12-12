@@ -17,14 +17,19 @@ const searchEl=document.querySelector('#movies-searchable');
 <section class="section">
 <img
 src="..." <--- this will need to be changed dynamically
-alt="..."<--- this will need to be changed dynamically
-movie-id="557" <--- this will need to be changed dynamically
+/>
+<h2
+title="..."<--- this will need to be changed dynamically
+year="..."<--- this will need to be changed dynamically
 />
 <img
 src="..." <--- this will need to be changed dynamically
-alt="..."<--- this will need to be changed dynamically
-movie-id="556"<--- this will need to be changed dynamically
 />
+<h2
+title="..."<--- this will need to be changed dynamically
+year=".."<--- this will need to be changed dynamically
+/>
+
 </section>
 <div class="content">
 <p id="content-close>X</p>
@@ -35,17 +40,15 @@ movie-id="556"<--- this will need to be changed dynamically
 //dynamic values
 function movieSection(movies) {
     return movies.map((movie) => {
-        return `
-        <h2>Title: ${movie.Title}</h2>
-        <br>
-        <h2> Year: ${movie.Year}</h2>
-        <img src=${movie.Poster} movie-id=${movie.imdbID}/>
+        return `   
+        <img src=${movie.Poster}/> 
+        <h2> Title: ${movie.Title} Year: ${movie.Year}</h2>
         `;
     })
 }
 
 //new function to organize data we want
-function createMovieContainer(movies){
+function createMovie(movies){
     const movieElement=document.createElement("div");
     //Validation purposes -- console.log(movieEl);
     movieElement.setAttribute('class', 'movie');
@@ -53,10 +56,10 @@ function createMovieContainer(movies){
     /*declare new variable, using backticks
     looping through every single movie with map */
     img_list = movieSection(movies);
+    /*join takes the array and converts it to a string to remove commas between */
     const movieTemplate = 
     `<section class="section">
-    
-    ${img_list.join("")}  //join takes the array and converts it to a string to remove commas between 
+    ${img_list.join("")}  
     ${movieSection(movies)}
     </section>
     <div class="content">
@@ -73,7 +76,7 @@ function createMovieContainer(movies){
 /* create new function to render data */
 function SearchMovies(data) {
 const movies = data.Search; //get the value from "search"
-const movieBlock = createMovieContainer(movies);
+const movieBlock = createMovie(movies);
 searchEl.appendChild(movieBlock);
 //Validation purposes, can see data also from dev tools in browser
 console.log("Data:", data);
@@ -98,7 +101,7 @@ buttonEl.onclick=function(event) {
     .then((res) => res.json()) //convert and return JSON
     .then((data) =>{
         const movies = data.Search; //get the value from "search"
-        const movieBlock = createMovieContainer(movies);
+        const movieBlock = createMovie(movies);
         searchEl.appendChild(movieBlock);
         console.log("Data:", data);
         
